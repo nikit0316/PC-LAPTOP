@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Three(Tree)</title>
+    <style>
+        .tree span:hover {
+            font-weight: Lighter;
+        }
+        .tree span {
+            cursor: pointer;
+        }
+    </style>
+    <meta charset="utf-8">
+</head>
+<body>
+<ul class="tree" id="tree">
+    <li>Отдел web-разработки
+        <ul>
+            <li>Junior
+                <ul>
+                    <li>Иванов</li>
+                    <li>Сидоров</li>
+                    <li>Петров</li>
+                </ul>
+            </li>
+            <li>Middle
+                <ul>
+                    <li>Кодов</li>
+                    <li>Текстов</li>
+                    <li>Пробелов</li>
+                </ul>
+            </li>
+            <li>Senior
+                <ul>
+                    <li>Штормов</li>
+                    <li>Саблаймов</li>
+                    <li>Атомов</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Отдел тестирования
+        <ul>
+            <li>Junior
+                <ul>
+                    <li>Тестов</li>
+                    <li>Багов</li>
+                </ul>
+            </li>
+            <li>Middle
+                <ul>
+                    <li>Ошибкин</li>
+                    <li>Багов</li>
+                    <li>Селениумов</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    for (let li of tree.querySelectorAll('li')) {
+        let span = document.createElement('span');
+        li.prepend(span);
+        span.append(span.nextSibling);
+    }
+
+    tree.onclick = function (event) {
+
+        if (event.target.tagName != 'SPAN') {
+            return;
+        }
+
+        let childrenContainer = event.target.parentNode.querySelector('ul');
+        if (!childrenContainer) return;
+
+        childrenContainer.hidden = !childrenContainer.hidden;
+    }
+</script>
+</body>
+</html>
