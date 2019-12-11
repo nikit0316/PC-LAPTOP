@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <img src="https://js.cx/clipart/train.gif"
+         style="cursor: pointer; left: 300px; top: 8px;" width="150" height="150" id="train">
+</head>
+<body>
+    <script>
+    var train = document.getElementById('train');
+ 
+    train.onmousedown = function (e) {
+ 
+        var coords = getCoords(train);
+        var shiftX = e.pageX - coords.left;
+ 
+ 
+        train.style.position = 'absolute';
+        document.body.appendChild(train);
+        moveAt(e);
+ 
+        train.style.zIndex = 1000;
+ 
+        function moveAt(e) {
+            train.style.left = e.pageX - shiftX + 'px';
+        }
+ 
+        document.onmousemove = function (e) {
+            moveAt(e);
+        };
+ 
+        train.onmouseup = function () {
+            document.onmousemove = null;
+            train.onmouseup = null;
+        };
+ 
+    }
+ 
+    train.ondragstart = function () {
+        return false;
+    };
+ 
+    function getCoords(elem) {
+        var box = elem.getBoundingClientRect();
+        return {
+            left: box.left + pageXOffset
+        };
+    }
+</script>
+</body>
+</html>
+</html>
