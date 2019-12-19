@@ -1,58 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
-	<meta charset="utf-8">
-	<style>
-        .modalDialog:target {
-    display: block;
-    pointer-events: auto;
-}
- 
-.modalDialog > div {
-    width: 400px;
-    position: relative;
-    margin: 10% auto;
-    padding: 5px 20px 13px 20px;
-    border-radius: 10px;
-    background: #fff;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
-
-}
-        .close {
-            background: #606061;
-            color: #FFFFFF;
-            line-height: 25px;
-            position: absolute;
-            right: -12px;
-            text-align: center;
-            top: -10px;
-            width: 24px;
-            text-decoration: none;
-            font-weight: bold;
-            -webkit-border-radius: 12px;
-            -moz-border-radius: 12px;
-            border-radius: 12px;
-            -moz-box-shadow: 1px 1px 3px #000;
-            -webkit-box-shadow: 1px 1px 3px #000;
-            box-shadow: 1px 1px 3px #000;
-        }
-
-        .close:hover { background: #00d9ff; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-<a href="#openModal">Открыть модальное окно</a>
-<div id="openModal" class="modalDialog">
-    <div>
-        <a href="#close" title="Закрыть" class="close">X</a>
-        <h2>Модальное окно</h2>07
-        <p>Пример простого модального окна, которое может быть создано с использованием CSS3.</p>
-        <p>Его можно использовать в широком диапазоне, начиная от вывода сообщений и заканчивая формой регистрации.</p>
-    </div>
-</div>
-
+    <div id="myPrompt" style="position: absolute; z-index: 123; display: none">здесь хоть два поля, хоть десять + плюс кнопки Отмена и ОК</div>
+    <script>
+        var str1= document.getElementById ('myPrompt').style.display = 'block';
+        var str2= document.getElementById ('myPrompt').style.display = 'block';
+    </script>
 </body>
 </html>

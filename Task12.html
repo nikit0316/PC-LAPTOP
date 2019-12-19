@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/Task12.js"></script>
+  <style>
+    .forma ul {
+  display: none;
+  margin: 0;
+}
+
+.forma .title {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.forma .title:before {
+  content: '▶';
+  padding-right: 6px;
+  color: green;
+}
+
+.forma.open ul {
+  display: block;
+}
+
+.forma.open .title:before {
+  content: '▼';
+}
+  </style>
+</head>
+<body>
+  <button onclick="forma.toggle()">menu.toggle()</button>
+  <button onclick="forma.open()">menu.open()</button>
+  <button onclick="forma.close()">menu.close()</button>
+    <script> forma = new Forma({
+      title: "Личные данные",
+      items: [
+        "Фамилия",
+        "Имя",
+        "Email",
+        "Номер телефона"
+      ]
+    });
+
+    document.body.appendChild(forma.getElem());
+  </script>
+</body>
+</html>
