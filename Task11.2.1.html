@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Drag'n'Drop</title>
+        <style>
+            .class {
+                position: relative;
+                top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="slider">
+            <img src="https://js.cx/clipart/train.gif" class="thumb" draggable="true">
+        </div>
+
+
+        <script>
+
+            let thumb = document.querySelector('.thumb');
+            let slider = document.querySelector('.slider');
+
+            thumb.onmousedown = function(event) {
+               
+                event.preventDefault();
+
+                thumb.style.position = 'absolute';
+
+                let shiftX = event.clientX - thumb.getBoundingClientRect().left;
+
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+
+                function onMouseMove(event) {
+
+                    let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
+
+                    
+                    if (newLeft < 0) {
+                        newLeft = 0;
+                    }
+
+                    let rightEdge = slider.offsetWidth - thumb.offsetWidth;
+                    
+                    if (newLeft > rightEdge) {
+                        newLeft = rightEdge;
+                    }
+
+                    thumb.style.left = newLeft + 'px';
+                }
+
+                function onMouseUp() {
+
+                    document.removeEventListener('mouseup', onMouseUp);
+                    document.removeEventListener('mousemove', onMouseMove);
+                }
+            };
+
+            thumb.ondragstart = function() {
+                return false;
+            };
+
+        </script>
+    </body>
+</html>
